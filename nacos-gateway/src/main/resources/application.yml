@@ -1,0 +1,24 @@
+server:
+  port: 9003
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+        namespace: ac6a9a11-ab7e-48ab-a6ec-b39deaaa4271
+    gateway:
+      routes:
+        - id: nacos-consumer
+          uri:  lb://nacos-consumer
+          predicates:
+            - Path=/consumer/**
+          filters:
+            - RewritePath=/consumer/(?<segment>.*),/$\{segment}
+        - id: nacos-provider
+          uri:  lb://nacos-provider
+          predicates:
+            - Path=/provider/**
+          filters:
+            - RewritePath=/provider/(?<segment>.*),/$\{segment}
+  application:
+    name: nacos-gateway

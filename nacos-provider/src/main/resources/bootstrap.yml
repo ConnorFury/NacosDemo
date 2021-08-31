@@ -1,0 +1,18 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: ac6a9a11-ab7e-48ab-a6ec-b39deaaa4271
+        ext-config[0]:
+          data-id: myname.properties
+          refresh: true
+        ext-config[1]:
+          group: Connor
+          data-id: myage.properties
+          refresh: true

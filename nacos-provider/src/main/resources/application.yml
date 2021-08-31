@@ -1,0 +1,21 @@
+server:
+  port: 9001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///school
+    username: root
+    password: 123456
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+        namespace: ac6a9a11-ab7e-48ab-a6ec-b39deaaa4271
+
+mybatis-plus:
+  type-aliases-package: com.connor.beans
+  configuration:
+    map-underscore-to-camel-case: true

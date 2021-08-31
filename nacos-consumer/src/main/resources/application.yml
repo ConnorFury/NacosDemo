@@ -1,0 +1,34 @@
+server:
+  port: 9002
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///school
+    username: root
+    password: 123456
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+        namespace: ac6a9a11-ab7e-48ab-a6ec-b39deaaa4271
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  sentinel:
+    enabled: true
+
+mybatis-plus:
+  type-aliases-package: com.connor.beans
+  configuration:
+    map-underscore-to-camel-case: true
